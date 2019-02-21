@@ -1,0 +1,37 @@
+.idea/*
+
+#Angular Project
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+src/webapp/dist
+src/webapp/dist-server
+src/webapp/tmp
+src/webapp/out-tsc
+
+# dependencies
+src/webapp/node_modules
+
+# misc
+src/webapp/.sass-cache
+src/webapp/connect.lock
+src/webapp/coverage
+src/webapp/libpeerconnection.log
+src/webapp/npm-debug.log
+src/webapp/yarn-error.log
+src/webapp/testem.log
+src/webapp/typings
+src/webapp/package-lock.json
+
+# e2e
+src/webapp/e2e/*.js
+src/webapp/e2e/*.map
+
+# System Files
+src/webapp/.DS_Store
+src/webapp/Thumbs.db
+
+# NodeJS
+src/node/package-lock.json
+src/node/node_modules
+src/node/dist
