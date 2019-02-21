@@ -3,6 +3,7 @@
 
 [![Twitter: @braulio_info](https://img.shields.io/badge/contact-@braulio_info-blue.svg?style=flat)](https://twitter.com/braulio_info)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/20b04ed75dd34d4ca8e7cef4812be3c8)](https://app.codacy.com/app/braulioti/redtench?utm_source=github.com&utm_medium=referral&utm_content=braulioti/redtench&utm_campaign=Badge_Grade_Settings)
 
 - Project to integrate RedMine Database to generate new reports and dashboards
 RedTrench is created and maintained by [Bráulio Figueiredo](http://brau.io).
