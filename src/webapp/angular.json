@@ -27,9 +27,27 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/toastr/build/toastr.css",
+              "node_modules/gritter/css/jquery.gritter.css",
+              "node_modules/metismenu/dist/metisMenu.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/style.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/jquery-slimscroll/jquery.slimscroll.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/metismenu/dist/metisMenu.js",
+              "node_modules/peity/jquery.peity.js",
+              "src/assets/js/inspinia.js",
+              "src/assets/js/plugins/pace/pace.min.js",
+              "node_modules/jqueryui/jquery-ui.js",
+              "node_modules/gritter/js/jquery.gritter.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
