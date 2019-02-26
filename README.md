@@ -3,7 +3,7 @@
 
 [![Twitter: @braulio_info](https://img.shields.io/badge/contact-@braulio_info-blue.svg?style=flat)](https://twitter.com/braulio_info)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/20b04ed75dd34d4ca8e7cef4812be3c8)](https://app.codacy.com/app/braulioti/redtench?utm_source=github.com&utm_medium=referral&utm_content=braulioti/redtench&utm_campaign=Badge_Grade_Settings)
-[![Travis Badge](https://travis-ci.org/braulioti/redtench.svg?branch=master)](https://travis-ci.org/braulioti/redtench)
+[![Travis Badge](https://travis-ci.org/braulioti/redtench.svg?branch=dev)](https://travis-ci.org/braulioti/redtench)
 
 Project to integrate RedMine Database to generate new reports and dashboards
 RedTrench is created and maintained by [Bráulio Figueiredo](http://brau.io).
