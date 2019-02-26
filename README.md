@@ -38,6 +38,6 @@ You can contribute to the development of this project in the following ways:
 ## Author
 
   - Email: braulio@braulioti.com.br
-  - Twitter: http://twitter.com/braulio_info
-  - GitHub: https://github.com/braulioti
-  - Website: https://brau.io
+  - Twitter: [@braulio_info](http://twitter.com/braulio_info)
+  - GitHub: [braulioti](https://github.com/braulioti)
+  - Website: [brau.io](https://brau.io)
