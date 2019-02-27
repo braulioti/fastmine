@@ -20,4 +20,4 @@ install:
   - cd src/webapp && npm install
 
 script:
-  - cd src/webapp && npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
