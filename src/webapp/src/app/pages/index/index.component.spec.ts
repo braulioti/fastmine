@@ -26,7 +26,7 @@ describe('IndexComponent', () => {
   });
 
   it('page title is not null after created', () => {
-    expect(component.title).toBe(null);
+    expect(component.title).not.toBe(null);
   });
 
   it('page title is not undefined after created', () => {
