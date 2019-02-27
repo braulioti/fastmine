@@ -14,11 +14,10 @@ addons:
 
 cache:
   directories:
-    - ./node_modules
+    - ./src/node_modules
 
 install:
-  - npm install
+  - cd src/webapp && npm install
 
 script:
-  - cd src/webapp
-  - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  - cd src/webapp && npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
