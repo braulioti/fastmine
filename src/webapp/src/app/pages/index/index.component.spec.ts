@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { IndexComponent } from './index.component';
+import {IndexComponent} from './index.component';
+import {LayoutModule} from '../../layout/layout.module';
 
 describe('IndexComponent', () => {
   let component: IndexComponent;
@@ -8,7 +9,8 @@ describe('IndexComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndexComponent ]
+      declarations: [ IndexComponent ],
+      imports: [ LayoutModule ]
     })
     .compileComponents();
   }));
@@ -22,4 +24,12 @@ describe('IndexComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('page title is not null after created'), () => {
+    expect(component.title).not.toBe(null);
+  }
+
+  it('page title is not undefined after created'), () => {
+    expect(component.title).not.toBe(undefined);
+  }
 });
