@@ -25,11 +25,11 @@ describe('IndexComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('page title is not null after created'), () => {
-    expect(component.title).not.toBe(null);
-  }
+  it('page title is not null after created', () => {
+    expect(component.title).toBe(null);
+  });
 
-  it('page title is not undefined after created'), () => {
+  it('page title is not undefined after created', () => {
     expect(component.title).not.toBe(undefined);
-  }
+  });
 });
