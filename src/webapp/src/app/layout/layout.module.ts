@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DefaultModule} from './default/default.module';
 import {MenuComponent} from './menu/menu.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import {NavbarComponent} from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -10,8 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
-    CommonModule,
-    DefaultModule
+    CommonModule
   ],
   exports: [
     MenuComponent,
