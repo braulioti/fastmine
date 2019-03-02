@@ -71,11 +71,11 @@ export class Server {
                 this.application.use(tokenParser);
 
                 // routes
-                for (let router of routers) {
-                    router.applyRoutes(this.application, this.sequelize);
-                    indexRouter.addRouter(router);
-                }
-                indexRouter.applyRoutes(this.application);
+                // for (let router of routers) {
+                //     router.applyRoutes(this.application, this.sequelize);
+                //     indexRouter.addRouter(router);
+                // }
+                // indexRouter.applyRoutes(this.application);
 
                 this.application.listen(environment.server.port, () => {
                     resolve(this.application);
