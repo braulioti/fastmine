@@ -8,10 +8,12 @@ import * as fs from 'fs';
 import {Sequelize} from 'sequelize-typescript';
 import * as corsMiddleware from 'restify-cors-middleware';
 import {tokenParser} from '../security/token.parser';
+import {Redmine} from '../redmine/redmine';
 
 export class Server {
     application: restify.Server;
     sequelize: Sequelize;
+    redmine: Redmine;
 
     initializeDb(): Promise<any> {
 
@@ -53,7 +55,6 @@ export class Server {
         })
         .run('update')
         .then(() => {
-            console.log('works!!');
             resolve(liquibase);
         })
         .catch((err) => {
@@ -65,45 +66,47 @@ export class Server {
         return new Promise((resolve, reject) => {
             try {
                 const options: restify.ServerOptions = {
-                    name: 'brau.io',
-                    version: '0.2.0'
+                    name: 'redtrench',
+                    version: '1.0.0-beta.1'
                 };
+
+                this.redmine = new Redmine();
 
                 if (environment.security.enableHTTPS) {
                     options.certificate = fs.readFileSync(environment.security.certificate);
                     options.key = fs.readFileSync(environment.security.key);
                 }
 
-                this.application = restify.createServer(options);
-
-                const corsOptions: corsMiddleware.Options = {
-                    preflightMaxAge: 10,
-                    origins: ['*'],
-                    allowHeaders: ['authorization'],
-                    exposeHeaders: []
-                };
-                const cors: corsMiddleware.CorsMiddleware = corsMiddleware(corsOptions);
-
-                this.application.pre(cors.preflight);
-
-                this.application.use(cors.actual);
-                this.application.use(restify.plugins.queryParser());
-                this.application.use(restify.plugins.bodyParser());
-                this.application.use(mergePatchBodyParser);
-                this.application.use(tokenParser);
-
-                // routes
-                // for (let router of routers) {
-                //     router.applyRoutes(this.application, this.sequelize);
-                //     indexRouter.addRouter(router);
-                // }
-                // indexRouter.applyRoutes(this.application);
-
-                this.application.listen(environment.server.port, () => {
-                    resolve(this.application);
-                });
-
-                this.application.on('restifyError', handleError);
+                // this.application = restify.createServer(options);
+                //
+                // const corsOptions: corsMiddleware.Options = {
+                //     preflightMaxAge: 10,
+                //     origins: ['*'],
+                //     allowHeaders: ['authorization'],
+                //     exposeHeaders: []
+                // };
+                // const cors: corsMiddleware.CorsMiddleware = corsMiddleware(corsOptions);
+                //
+                // this.application.pre(cors.preflight);
+                //
+                // this.application.use(cors.actual);
+                // this.application.use(restify.plugins.queryParser());
+                // this.application.use(restify.plugins.bodyParser());
+                // this.application.use(mergePatchBodyParser);
+                // this.application.use(tokenParser);
+                //
+                // // routes
+                // // for (let router of routers) {
+                // //     router.applyRoutes(this.application, this.sequelize);
+                // //     indexRouter.addRouter(router);
+                // // }
+                // // indexRouter.applyRoutes(this.application);
+                //
+                // this.application.listen(environment.server.port, () => {
+                //     resolve(this.application);
+                // });
+                //
+                // this.application.on('restifyError', handleError);
             } catch (error) {
                 reject(error);
             }
@@ -113,8 +116,7 @@ export class Server {
     bootstrap(routers: Router[] = []): Promise<Server> {
         return this.initializeDb().then(() =>
             this.runLiquibase().then(() =>
-                // this.initRoutes(routers).then(() => this)
-                this
+                this.initRoutes(routers).then(() => this)
             )
         );
     }
