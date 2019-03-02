@@ -39,6 +39,28 @@ export class Server {
         });
     }
 
+    runLiquibase(): Promise<any> {
+        const liquibase = require('liquibase');
+
+        return new Promise( (resolve, reject) => liquibase({
+            liquibase: 'lib/liquibase-core-3.5.3.jar',
+            driver: 'org.postgresql.Driver',
+            classpath: 'lib/postgresql-9.4-1202.jdbc4.jar',
+            changeLogFile: 'resources/liquibase/db.changelog.xml',
+            url: `jdbc:postgresql://${environment.db.host}:${environment.db.port}/${environment.db.database}`,
+            username: environment.db.user,
+            password: environment.db.password
+        })
+        .run('update')
+        .then(() => {
+            console.log('works!!');
+            resolve(liquibase);
+        })
+        .catch((err) => {
+            reject(err);
+        });
+    }
+
     initRoutes(routers: Router[]): Promise<any> {
         return new Promise((resolve, reject) => {
             try {
@@ -90,7 +112,10 @@ export class Server {
 
     bootstrap(routers: Router[] = []): Promise<Server> {
         return this.initializeDb().then(() =>
-            this.initRoutes(routers).then(() => this)
+            this.runLiquibase().then(() =>
+                // this.initRoutes(routers).then(() => this)
+                this
+            )
         );
     }
 

@@ -17,7 +17,8 @@ addons:
 
 cache:
   directories:
-    - ./src/node_modules
+    - ./src/webapp/node_modules
+    - ./src/node/node_modules
 
 install:
   - cd src/node && npm install

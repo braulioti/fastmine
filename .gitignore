@@ -35,3 +35,4 @@ src/webapp/Thumbs.db
 src/node/package-lock.json
 src/node/node_modules
 src/node/dist
+src/node/*.log
