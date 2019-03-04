@@ -18,7 +18,7 @@
         </preConditions>
 
         <createTable tableName="test">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+            <column name="id" type="int" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="test" type="varchar(50)">
@@ -35,4 +35,1842 @@
         <dropTable tableName="test"/>
     </changeSet>
 
+    <changeSet id="3" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="agile_colors"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="agile_colors">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="container_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="container_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="color" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="agile_data"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="agile_data">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="issue_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="story_points" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="5" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="ar_internal_metadata"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="ar_internal_metadata">
+            <column name="key" type="varchar(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="value" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="6" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="attachments"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="attachments">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="container_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="container_type" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="filename" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="disk_filename" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="filesize" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="content_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="digest" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="downloads" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="author_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="disk_directory" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="7" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="auth_sources"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="auth_sources">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(60)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="host" type="varchar(60)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="port" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="account" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="account_password" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="base_dn" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="attr_login" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="attr_firstname" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="attr_lastname" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="attr_mail" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="onthefly_register" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tls" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="filter" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="timeout" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="verify_peer" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="8" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="boards"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="boards">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="topics_count" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="messages_count" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_message_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="parent_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="9" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="changeset_parents"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="changeset_parents">
+            <column name="changeset_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="parent_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="10" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="changesets"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="changesets">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="repository_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="revision" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="committer" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="committed_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="comments" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="commit_date" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="scmid" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="11" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="changesets_issues"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="changesets_issues">
+            <column name="changeset_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="issue_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="12" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="comments"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="comments">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="commented_type" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="commented_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="author_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="content" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="13" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="custom_field_enumerations"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="custom_field_enumerations">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="custom_field_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="active" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="14" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="custom_fields"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="custom_fields">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="field_format" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="possible_values" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="regexp" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="min_length" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="max_length" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_required" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_for_all" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_filter" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="searchable" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="default_value" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="editable" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="visible" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="multiple" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="format_store" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="clob">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="15" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="custom_fields_projects"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="custom_fields_projects">
+            <column name="custom_field_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="16" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="custom_fields_roles"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="custom_fields_roles">
+            <column name="custom_field_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="17" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="custom_fields_trackers"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="custom_fields_trackers">
+            <column name="custom_field_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tracker_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="18" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="custom_values"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="custom_values">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="customized_type" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="customized_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="custom_field_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="value" type="clob">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="19" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="documents"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="documents">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="category_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="email_addresses"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="email_addresses">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_default" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="notify" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="21" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="enabled_modules"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="enabled_modules">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="22" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="enumerations"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="enumerations">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_default" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="active" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="parent_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position_name" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="23" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="groups_users"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="groups_users">
+            <column name="group_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="24" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="import_items"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="import_items">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="import_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="obj_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="message" type="clob">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="25" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="imports"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="imports">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="filename" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="settings" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="total_items" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="finished" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="26" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="issue_categories"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="issue_categories">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(60)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="assigned_to_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="27" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="issue_relations"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="issue_relations">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="issue_from_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="issue_to_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="relation_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="delay" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="28" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="issue_statuses"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="issue_statuses">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_closed" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="default_done_ratio" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="29" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="issues"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="issues">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="tracker_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="subject" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="due_date" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="category_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="assigned_to_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="priority_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="fixed_version_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="author_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lock_version" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="start_date" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="done_ratio" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="estimated_hours" type="float">
+                <constraints nullable="true"/>
+            </column>
+            <column name="parent_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="root_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lft" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="rgt" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_private" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="closed_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="30" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="journal_details"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="journal_details">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="journal_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="property" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="prop_key" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="old_value" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="value" type="clob">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="31" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="journals"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="journals">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="journalized_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="journalized_type" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="notes" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="private_notes" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="32" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="member_roles"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="member_roles">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="member_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="inherited_from" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="33" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="members"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="members">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="mail_notification" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="34" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="messages"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="messages">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="board_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="parent_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="subject" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="content" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="author_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="replies_count" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_reply_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="locked" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sticky" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="35" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="news"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="news">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="title" type="varchar(60)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="summary" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="author_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="comments_count" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="36" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="open_id_authentication_associations"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="open_id_authentication_associations">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="issued" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lifetime" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="handle" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="assoc_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="server_url" type="blob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="secret" type="blob">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="37" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="open_id_authentication_nonces"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="open_id_authentication_nonces">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="timestamp" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="server_url" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="salt" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="38" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="projects"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="projects">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="homepage" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_public" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="parent_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="identifier" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lft" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="rgt" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="inherit_members" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="default_version_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="default_assigned_to_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="39" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="projects_trackers"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="projects_trackers">
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tracker_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="40" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="queries"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="queries">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="filters" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="column_names" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sort_criteria" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="group_by" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="visibility" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="options" type="clob">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="41" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="queries_roles"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="queries_roles">
+            <column name="query_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="42" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="repositories"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="repositories">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="url" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="login" type="varchar(60)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="root_url" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="path_encoding" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="log_encoding" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="extra_info" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="identifier" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_default" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="43" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="roles"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="roles">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="assignable" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="builtin" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="permissions" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="issues_visibility" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="users_visibility" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="time_entries_visibility" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="all_roles_managed" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="settings" type="clob">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="44" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="roles_managed_roles"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="roles_managed_roles">
+            <column name="role_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="managed_role_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="45" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="schema_migrations"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="schema_migrations">
+            <column name="version" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="46" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="settings"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="settings">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="value" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="47" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="time_entries"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="time_entries">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="issue_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="hours" type="float">
+                <constraints nullable="true"/>
+            </column>
+            <column name="comments" type="varchar(1024)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="activity_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="spent_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tyear" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tmonth" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tweek" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="48" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="tokens"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="tokens">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="action" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="value" type="varchar(40)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="49" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="trackers"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="trackers">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_in_chlog" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_in_roadmap" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="fields_bits" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="default_status_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="50" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_preferences"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="user_preferences">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="others" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="hide_mail" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="time_zone" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="51" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="users">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="login" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="hashed_password" type="varchar(40)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="firstname" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lastname" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="admin" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_login_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="language" type="varchar(5)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="auth_source_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="identity_url" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="mail_notification" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="salt" type="varchar(64)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="must_change_passwd" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="passwd_changed_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="52" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="versions"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="versions">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="effective_date" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="wiki_page_title" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sharing" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="53" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="watchers"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="watchers">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="watchable_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="watchable_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="54" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="wiki_content_versions"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="wiki_content_versions">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="wiki_content_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="page_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="author_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="data" type="blob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="compression" type="varchar(6)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="comments" type="varchar(1024)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="version" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="55" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="wiki_contents"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="wiki_contents">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="page_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="author_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="text" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="comments" type="varchar(1024)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="version" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="56" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="wiki_pages"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="wiki_pages">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="wiki_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="protected" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="parent_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="57" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="wiki_redirects"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="wiki_redirects">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="wiki_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="redirects_to" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="redirects_to_wiki_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="58" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="wikis"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="wikis">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="start_page" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="59" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="workflows"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="workflows">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="tracker_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="old_status_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="new_status_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="assignee" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="author" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="field_name" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="rule" type="varchar(30)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>
