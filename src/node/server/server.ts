@@ -71,6 +71,7 @@ export class Server {
                 };
 
                 this.redmine = new Redmine();
+                this.redmine.setSequelizeRedtrench(this.sequelize);
 
                 if (environment.security.enableHTTPS) {
                     options.certificate = fs.readFileSync(environment.security.certificate);
