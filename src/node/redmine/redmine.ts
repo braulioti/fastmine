@@ -16,7 +16,6 @@ export class Redmine {
 
         this.initializeDb().then(() => {
             schedule.scheduleJob(rule, () => {
-                console.log('works!!');
                 this.synchronizeAll();
             });
         });

@@ -11,7 +11,30 @@ export class SynchronizeProjects extends Synchronize {
 
                 ProjectsRedmine.findAll({}).then(resultRedmine => {
                     Projects.findAll({}).then(resultRedtrench => {
-                        console.log('Find and save projects here!');
+                        resultRedmine.forEach((item: ProjectsRedmine) => {
+                           const project = resultRedtrench.find((p: Projects) => p.id === item.id);
+                           if (!project) {
+                               let newProject = new Projects();
+
+                               newProject.id = item.id;
+                               newProject.name = item.name;
+                               newProject.description = item.description;
+                               newProject.homepage = item.homepage;
+                               newProject.isPublic = item.isPublic;
+                               newProject.parentId = item.parentId;
+                               newProject.createdOn = item.createdOn;
+                               newProject.updatedOn = item.updatedOn;
+                               newProject.identifier = item.identifier;
+                               newProject.status = item.status;
+                               newProject.lft = item.lft;
+                               newProject.rgt = item.rgt;
+                               newProject.inheritMembers = item.inheritMembers;
+                               newProject.defaultVersionId = item.defaultVersionId;
+                               newProject.defaultAssignedToId = item.defaultAssignedToId;
+
+                               newProject.save();
+                           }
+                        });
                     });
                 });
             } catch(e) {
