@@ -5,6 +5,9 @@ language: node_js
 node_js:
   - "8"
 
+services:
+  - postgresql
+
 addons:
   apt:
     sources:
@@ -14,10 +17,16 @@ addons:
 
 cache:
   directories:
-    - ./src/node_modules
+    - ./src/webapp/node_modules
+    - ./src/node/node_modules
 
 install:
-  - cd src/webapp && npm install
+  - cd src/node && npm install
+  - cd ../webapp && npm install
+
+before_script:
+  - psql -c 'create database redtrench;' -U postgres
 
 script:
   - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  - cd ../node
