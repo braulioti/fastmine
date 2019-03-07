@@ -3,7 +3,7 @@
     <ul class="nav metismenu" id="side-menu">
       <li class="nav-header">
         <div class="dropdown profile-element">
-          <h3><a [href]="indexLink" target="_blank">{{title}}</a></h3>
+          <h3><a [href]="indexLink" target="_self">{{title}}</a></h3>
           <div *ngIf="userName && userMenuName && userMenu.length > 0" >
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
               <span class="block m-t-xs font-bold">{{ userName }}</span>
@@ -19,7 +19,11 @@
             </ul>
           </div>
         </div>
-        <div class="logo-element">{{ logoElementTitle }}</div>
+        <div class="logo-element">
+          <a [href]="indexLink" target="_self">
+              <img [src]="logoElement" class="logo-menu-icon" />
+          </a>
+        </div>
       </li>
 
       <li *ngFor="let item of mainMenu" [ngClass]="{'active' : item.active, 'mm-active' : item.active}">

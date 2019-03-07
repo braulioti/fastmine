@@ -13,8 +13,7 @@ export class MenuComponent {
   @Input() userMenu: MenuItemModel[] = [];
   @Input() indexLink: string = '';
   @Input() mainMenu: MenuItemModel[] = [];
+  @Input() logoElement: string = '';
 
   MenuType = MenuType;
-
-  logoElementTitle = 'RT+';
 }

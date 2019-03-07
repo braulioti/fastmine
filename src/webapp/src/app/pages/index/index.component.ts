@@ -8,6 +8,7 @@ import {MenuItemModel, MenuType} from '../../layout/menu/menu-item.model';
 })
 export class IndexComponent implements OnInit {
   title: string = 'RedTrench';
+  logoElement: string = 'assets/img/logo/android-icon-48x48.png';
 
   userMenuName: string = 'Configuration';
   userName: string = 'Bráulio Figueiredo';
