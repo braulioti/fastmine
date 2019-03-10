@@ -13,7 +13,7 @@ export class MenuComponent {
   @Input() userMenu: MenuItemModel[] = [];
   @Input() indexLink: string = '';
   @Input() mainMenu: MenuItemModel[] = [];
-  @Input() logoElement: string = '';
+  @Input() logoElement: string = null;
 
   MenuType = MenuType;
 }

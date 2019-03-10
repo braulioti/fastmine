@@ -41,9 +41,9 @@ describe('MenuComponent', () => {
     expect(component.mainMenu.length).toBe(0);
   });
 
-  it('logoElementTitle is not empty, null or undefinded', () => {
-    const isNotEmpty = (component.logoElementTitle && (component.logoElementTitle.trim() !== ''));
+  it('logoElement is empty', () => {
+    const isEmpty = (!(component.logoElement) && !(component.logoElement) && (component.userMenu.length === 0));
 
-    expect(isNotEmpty).toBe(true);
+    expect(isEmpty).toBe(true);
   });
 });
