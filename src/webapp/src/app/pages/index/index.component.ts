@@ -80,7 +80,7 @@ export class IndexComponent implements OnInit {
         'fa-bar-chart'
       );
 
-    let subItems: MenuItemModel[];
+    let subItems: MenuItemModel[] ;
 
     subItems = [];
     subItems.push(new MenuItemModel('Submenu - Item 1', MenuType.MENU_ITEM, 'https://google.com.br'));

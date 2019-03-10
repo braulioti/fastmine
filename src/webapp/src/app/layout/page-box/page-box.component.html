@@ -1,0 +1,14 @@
+
+<div class="middle-box text-center loginscreen animated fadeInDown box">
+  <div>
+    <div>
+      <h1 class="logo-name">
+        <ng-content select=".logo-image"></ng-content>
+      </h1>
+    </div>
+
+    <h3><ng-content select=".title"></ng-content></h3>
+    <p><ng-content select=".subtitle"></ng-content></p>
+    <ng-content (select)="content"></ng-content>
+  </div>
+</div>
