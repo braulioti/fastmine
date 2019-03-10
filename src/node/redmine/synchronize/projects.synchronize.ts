@@ -1,6 +1,7 @@
 import {Synchronize} from './synchronize';
 import {Projects} from '../../models/projects.model';
 import {ProjectsRedmine} from '../../models_redmine/projects.modelredmine';
+import {Sequelize} from 'sequelize-typescript';
 
 export class SynchronizeProjects extends Synchronize {
     synchronize(): Promise<any> {

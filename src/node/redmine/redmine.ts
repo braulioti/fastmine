@@ -2,6 +2,7 @@ import {Sequelize} from 'sequelize-typescript';
 import {environment} from '../common/environments';
 import * as sequelize from 'sequelize';
 import {SynchronizeProjects} from './synchronize/projects.synchronize';
+import {SynchronizeUsers} from './synchronize/users.synchronize';
 
 export class Redmine {
     sequelize: Sequelize;
@@ -10,13 +11,19 @@ export class Redmine {
     constructor() {
         var schedule = require('node-schedule');
 
-        var rule = new schedule.RecurrenceRule();
+        var ruleHour = new schedule.RecurrenceRule();
+        var ruleFiveMinutes = new schedule.RecurrenceRule();
 
-        rule.minute = new schedule.Range(0, 59, 5);
+        ruleHour.minute = new schedule.Range(0, 59, 60);
+        ruleFiveMinutes.minute = new schedule.Range(0, 59, 5);
 
         this.initializeDb().then(() => {
-            schedule.scheduleJob(rule, () => {
-                this.synchronizeAll();
+            schedule.scheduleJob(ruleHour, () => {
+                this.synchronizeHour();
+            });
+
+            schedule.scheduleJob(ruleFiveMinutes, () => {
+                this.synchronizeFiveMinutes();
             });
         });
     }
@@ -46,12 +53,19 @@ export class Redmine {
         });
     }
 
-    synchronizeAll() {
+    synchronizeHour() {
         let synchronizeProjects: SynchronizeProjects;
+        let synchronizeUsers: SynchronizeUsers;
 
         synchronizeProjects = new SynchronizeProjects(this.sequelize, this.sequelizeRedTrench);
+        synchronizeUsers = new SynchronizeUsers(this.sequelize, this.sequelizeRedTrench);
 
         synchronizeProjects.synchronize().then(result => {});
+        synchronizeUsers.synchronize().then(result => {});
+    }
+
+    synchronizeFiveMinutes() {
+        // TODO: Call synchronize in five minutes
     }
 
     getSequelizeRedtrench(): Sequelize {

@@ -29,7 +29,7 @@ export class Server {
                     //logging: console.log,
                     logging: false,
                     storage: ':memory:',
-                    modelPaths: [__dirname + '/**/*.model.ts']
+                    modelPaths: [__dirname + '/**/*.model.ts', __dirname + '/**/*.modelredtrench.ts']
                 });
 
                 this.sequelize.authenticate().then(() => {
