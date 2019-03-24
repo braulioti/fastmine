@@ -10,10 +10,11 @@ export const environment = {
         password: process.env.DB_PASSWORD || 'postgres'
     },
     redmineDB: {
+        connection: process.env.REDMINE_DB_CONNECTION || 'postgres',
         host: process.env.REDMINE_DB_HOST || '',
-        port: parseInt(process.env.REDMINE_DB_PORT) || 3306,
-        database: process.env.REDMINE_DB_DATABASE || '',
-        user: process.env.REDMINE_DB_USER || 'root',
+        port: parseInt(process.env.REDMINE_DB_PORT) || 5432,
+        database: process.env.REDMINE_DB_DATABASE || 'redmine',
+        user: process.env.REDMINE_DB_USER || '',
         password: process.env.REDMINE_DB_PASSWORD || ''
     },
     security: {

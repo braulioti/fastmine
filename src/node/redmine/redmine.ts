@@ -33,7 +33,7 @@ export class Redmine {
             try {
                 this.sequelize =  new Sequelize({
                     database: environment.redmineDB.database,
-                    dialect: 'mysql',
+                    dialect: environment.redmineDB.connection,
                     username: environment.redmineDB.user,
                     password: environment.redmineDB.password,
                     host: environment.redmineDB.host,
@@ -41,7 +41,7 @@ export class Redmine {
                     logging: console.log,
                     //logging: false,
                     storage: ':memory:',
-                    modelPaths: [__dirname + '/**/*.model.ts']
+                    modelPaths: [__dirname + '/**/*.model.' + environment.redmineDB.connection + '.ts']
                 });
 
                 this.sequelize.authenticate().then(() => {

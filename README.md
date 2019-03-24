@@ -18,7 +18,7 @@ Stay up to date with the latest release and announcements on Twitter:
   - Angular CLI
   - NodeJS
   - PostgreSQL Database
-  - Redmine with Agile Plugin
+  - Redmine with Agile Plugin (MySQL or PostgreSQL database)
 
 ## Versioning
 

@@ -1,8 +1,9 @@
 import {Synchronize} from './synchronize';
-import {UsersRedmine} from '../../models_redmine/users.modelredmine';
+import {UsersRedmine} from '../../models_redmine_mysql/users.modelredmine';
 import {Users} from '../../models/users.model';
 import {UserRedTrench} from '../../models_redtrench/rt-user.modelredtrench';
 import {Sequelize} from 'sequelize-typescript';
+import {environment} from '../../common/environments';
 
 export class SynchronizeUsers extends Synchronize {
     synchronize(): Promise<any> {
@@ -24,7 +25,11 @@ export class SynchronizeUsers extends Synchronize {
                                newUser.hashedPassword = item.hashedPassword;
                                newUser.firstname = item.firstname;
                                newUser.lastname = item.lastname;
-                               newUser.admin = item.admin;
+                               if (environment.redmineDB.connection === 'mysql') {
+                                   newUser.admin = item.admin;
+                               } else {
+                                   newUser.admin = item.admin ? 1 : 0;
+                               }
                                newUser.status = item.status;
                                newUser.lastLoginOn = item.lastLoginOn;
                                newUser.language = item.language;
@@ -35,7 +40,11 @@ export class SynchronizeUsers extends Synchronize {
                                newUser.identityUrl = item.identityUrl;
                                newUser.mailNotification = item.mailNotification;
                                newUser.salt = item.salt;
-                               newUser.mustChangePasswd = item.mustChangePasswd;
+                               if (environment.redmineDB.connection === 'mysql') {
+                                   newUser.mustChangePasswd = item.mustChangePasswd;
+                               } else {
+                                   newUser.mustChangePasswd = item.mustChangePasswd ? 1 : 0;
+                               }
                                newUser.passwdChangedOn = item.passwdChangedOn;
 
                                newUser.save();

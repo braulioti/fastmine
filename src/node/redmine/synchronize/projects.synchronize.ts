@@ -1,7 +1,8 @@
 import {Synchronize} from './synchronize';
 import {Projects} from '../../models/projects.model';
-import {ProjectsRedmine} from '../../models_redmine/projects.modelredmine';
+import {ProjectsRedmine} from '../../models_redmine_mysql/projects.modelredmine';
 import {Sequelize} from 'sequelize-typescript';
+import {environment} from '../../common/environments';
 
 export class SynchronizeProjects extends Synchronize {
     synchronize(): Promise<any> {
@@ -21,7 +22,11 @@ export class SynchronizeProjects extends Synchronize {
                                newProject.name = item.name;
                                newProject.description = item.description;
                                newProject.homepage = item.homepage;
-                               newProject.isPublic = item.isPublic;
+                               if (environment.redmineDB.connection === 'mysql') {
+                                   newProject.isPublic = item.isPublic;
+                               } else {
+                                   newProject.isPublic = item.isPublic ? 1 : 0;
+                               }
                                newProject.parentId = item.parentId;
                                newProject.createdOn = item.createdOn;
                                newProject.updatedOn = item.updatedOn;
@@ -29,7 +34,11 @@ export class SynchronizeProjects extends Synchronize {
                                newProject.status = item.status;
                                newProject.lft = item.lft;
                                newProject.rgt = item.rgt;
-                               newProject.inheritMembers = item.inheritMembers;
+                               if (environment.redmineDB.connection === 'mysql') {
+                                   newProject.inheritMembers = item.inheritMembers;
+                               } else {
+                                   newProject.inheritMembers = item.inheritMembers ? 1 : 0;
+                               }
                                newProject.defaultVersionId = item.defaultVersionId;
                                newProject.defaultAssignedToId = item.defaultAssignedToId;
 
