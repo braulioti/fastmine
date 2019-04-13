@@ -62,7 +62,7 @@ export class PrincipalService {
     getHeader(): HttpHeaders {
         return new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.token}`
+            Authorization: `Bearer ${this.token}`
         });
     }
 }

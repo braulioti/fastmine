@@ -1877,11 +1877,11 @@
     <changeSet id="60" author="braulio.figueiredo">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="rt_user"/>
+                <tableExists tableName="fm_user"/>
             </not>
         </preConditions>
 
-        <createTable tableName="rt_user">
+        <createTable tableName="fm_user">
             <column name="id" type="int">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -1925,5 +1925,129 @@
             </not>
         </preConditions>
         <createSequence sequenceName="sq_user" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="62" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="fm_project"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="fm_project">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="homepage" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="parent_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="identifier" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="63" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="sq_project"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="sq_project" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="64" author="braulio.figueiredo">
+        <addColumn tableName="fm_project">
+            <column name="redmine_id" type="int"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="65" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="fm_version"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="fm_version">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="project_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="effective_date" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="wiki_page_title" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sharing" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="redmine_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="66" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="sq_version"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="sq_version" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="67" author="braulio.figueiredo">
+        <addForeignKeyConstraint baseColumnNames="project_id"
+                                 baseTableName="fm_version"
+                                 constraintName="fk_version_project"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fm_project"/>
+    </changeSet>
+
+    <changeSet id="68" author="braulio.figueiredo">
+        <addColumn tableName="fm_user">
+            <column name="redmine_id" type="int"/>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>

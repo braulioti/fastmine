@@ -1,24 +1,24 @@
 import {Synchronize} from './synchronize';
-import {UsersRedmine} from '../../models_redmine_mysql/users.modelredmine';
 import {Users} from '../../models/users.model';
-import {UserRedTrench} from '../../models_redtrench/rt-user.modelredtrench';
 import {Sequelize} from 'sequelize-typescript';
 import {environment} from '../../common/environments';
+import {UsersRedmine} from '../../models_redmine_mysql/users.modelredmine.mysql';
+import {UserFastmine} from '../../models_fastmine/fm-user.modelfastmine';
 
 export class SynchronizeUsers extends Synchronize {
     synchronize(): Promise<any> {
         return new Promise((resolve, reject) => {
             try {
                 this.sequelizeOrigin.addModels([UsersRedmine]);
-                this.sequelizeDestiny.addModels([Users, UserRedTrench]);
+                this.sequelizeDestiny.addModels([Users, UserFastmine]);
 
                 UsersRedmine.findAll({}).then(resultRedmine => {
-                    Users.findAll({}).then(resultRedtrench => {
+                    Users.findAll({}).then(resultFastmine => {
                         resultRedmine.forEach((item: UsersRedmine) => {
-                           const user = resultRedtrench.find((p: Users) => p.id === item.id);
+                           const user = resultFastmine.find((p: Users) => p.id === item.id);
                            if (!user) {
                                let newUser = new Users();
-                               let newUserRedTrench = new UserRedTrench();
+                               let newUserFastmine = new UserFastmine();
 
                                newUser.id = item.id;
                                newUser.login = item.login;
@@ -53,19 +53,20 @@ export class SynchronizeUsers extends Synchronize {
                                    this.sequelizeDestiny.query("SELECT nextval('sq_user')", {
                                        type: Sequelize.QueryTypes.SELECT
                                    }).then(res => {
-                                       newUserRedTrench.id = res[0].nextval;
-                                       newUserRedTrench.login = item.login;
-                                       newUserRedTrench.hashedPassword = item.hashedPassword;
-                                       newUserRedTrench.firstname = item.firstname;
-                                       newUserRedTrench.lastname = item.lastname;
-                                       newUserRedTrench.status = item.status;
-                                       newUserRedTrench.lastLoginOn = item.lastLoginOn;
-                                       newUserRedTrench.language = item.language;
-                                       newUserRedTrench.createdOn = item.createdOn;
-                                       newUserRedTrench.updatedOn = item.updatedOn;
-                                       newUserRedTrench.passwdChangedOn = item.passwdChangedOn;
+                                       newUserFastmine.id = res[0].nextval;
+                                       newUserFastmine.login = item.login;
+                                       newUserFastmine.hashedPassword = item.hashedPassword;
+                                       newUserFastmine.firstname = item.firstname;
+                                       newUserFastmine.lastname = item.lastname;
+                                       newUserFastmine.status = item.status;
+                                       newUserFastmine.lastLoginOn = item.lastLoginOn;
+                                       newUserFastmine.language = item.language;
+                                       newUserFastmine.createdOn = item.createdOn;
+                                       newUserFastmine.updatedOn = item.updatedOn;
+                                       newUserFastmine.passwdChangedOn = item.passwdChangedOn;
+                                       newUserFastmine.redmineId = item.id;
 
-                                       newUserRedTrench.save();
+                                       newUserFastmine.save();
                                    });
                                }
                            }

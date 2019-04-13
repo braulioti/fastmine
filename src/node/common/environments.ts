@@ -5,7 +5,7 @@ export const environment = {
     db: {
         host: process.env.DB_HOST || '127.0.0.1',
         port: parseInt(process.env.DB_PORT) || 5432,
-        database: process.env.DB_DATABASE || 'redtrench',
+        database: process.env.DB_DATABASE || 'fastmine',
         user: process.env.DB_USER || 'postgres',
         password: process.env.DB_PASSWORD || 'postgres'
     },
@@ -15,7 +15,7 @@ export const environment = {
         port: parseInt(process.env.REDMINE_DB_PORT) || 5432,
         database: process.env.REDMINE_DB_DATABASE || 'redmine',
         user: process.env.REDMINE_DB_USER || '',
-        password: process.env.REDMINE_DB_PASSWORD || ''
+        password: process.env.REDMINE_DB_PASSWORD || '#!'
     },
     security: {
         saltRounds: process.env.SALT_ROUNDS || 10,

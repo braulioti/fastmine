@@ -7,7 +7,7 @@ import {handleError} from './error.handler';
 import * as fs from 'fs';
 import {Sequelize} from 'sequelize-typescript';
 import * as corsMiddleware from 'restify-cors-middleware';
-import {tokenParser} from '../security/token.parser';
+//import {tokenParser} from '../security/token.parser';
 import {Redmine} from '../redmine/redmine';
 
 export class Server {
@@ -29,7 +29,7 @@ export class Server {
                     //logging: console.log,
                     logging: false,
                     storage: ':memory:',
-                    modelPaths: [__dirname + '/**/*.model.ts', __dirname + '/**/*.modelredtrench.ts']
+                    modelPaths: [__dirname + '/../**/*.model.ts', __dirname + '/../**/*.modelfastmine.ts']
                 });
 
                 this.sequelize.authenticate().then(() => {
@@ -59,19 +59,19 @@ export class Server {
         })
         .catch((err) => {
             reject(err);
-        });
+        }));
     }
 
     initRoutes(routers: Router[]): Promise<any> {
         return new Promise((resolve, reject) => {
             try {
                 const options: restify.ServerOptions = {
-                    name: 'redtrench',
+                    name: 'fastmine',
                     version: '1.0.0-beta.1'
                 };
 
                 this.redmine = new Redmine();
-                this.redmine.setSequelizeRedtrench(this.sequelize);
+                this.redmine.setSequelizeFastime(this.sequelize);
 
                 if (environment.security.enableHTTPS) {
                     options.certificate = fs.readFileSync(environment.security.certificate);

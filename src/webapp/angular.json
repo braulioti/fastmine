@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "redtrench": {
+    "fastmine": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/redtrench",
+            "outputPath": "dist/fastmine",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -80,18 +80,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "redtrench:build"
+            "browserTarget": "fastmine:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "redtrench:build:production"
+              "browserTarget": "fastmine:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "redtrench:build"
+            "browserTarget": "fastmine:build"
           }
         },
         "test": {
@@ -125,7 +125,7 @@
         }
       }
     },
-    "redtrench-e2e": {
+    "fastmine-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -134,11 +134,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "redtrench:serve"
+            "devServerTarget": "fastmine:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "redtrench:serve:production"
+              "devServerTarget": "fastmine:serve:production"
             }
           }
         },
@@ -154,5 +154,5 @@
       }
     }
   },
-  "defaultProject": "redtrench"
+  "defaultProject": "fastmine"
 }

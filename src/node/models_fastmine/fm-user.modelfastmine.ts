@@ -1,7 +1,7 @@
 import {Column, Model, Table} from 'sequelize-typescript';
 
-@Table({tableName: 'rt_user'})
-export class UserRedTrench extends Model<UserRedTrench> {
+@Table({tableName: 'fm_user'})
+export class UserFastmine extends Model<UserFastmine> {
     @Column
     login: string;
 
@@ -31,4 +31,7 @@ export class UserRedTrench extends Model<UserRedTrench> {
 
     @Column({field: 'passwd_changed_on'})
     passwdChangedOn: Date;
+
+    @Column({field: 'redmine_id'})
+    redmineId: number;
 }

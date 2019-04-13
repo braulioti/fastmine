@@ -3,10 +3,11 @@ import {environment} from '../common/environments';
 import * as sequelize from 'sequelize';
 import {SynchronizeProjects} from './synchronize/projects.synchronize';
 import {SynchronizeUsers} from './synchronize/users.synchronize';
+import {SynchronizeVersions} from './synchronize/versions.synchronize';
 
 export class Redmine {
     sequelize: Sequelize;
-    sequelizeRedTrench: Sequelize;
+    sequelizeFastmine: Sequelize;
 
     constructor() {
         var schedule = require('node-schedule');
@@ -14,7 +15,7 @@ export class Redmine {
         var ruleHour = new schedule.RecurrenceRule();
         var ruleFiveMinutes = new schedule.RecurrenceRule();
 
-        ruleHour.minute = new schedule.Range(0, 59, 60);
+        ruleHour.minute = new schedule.Range(0, 59, 1);
         ruleFiveMinutes.minute = new schedule.Range(0, 59, 5);
 
         this.initializeDb().then(() => {
@@ -41,7 +42,7 @@ export class Redmine {
                     logging: console.log,
                     //logging: false,
                     storage: ':memory:',
-                    modelPaths: [__dirname + '/**/*.model.' + environment.redmineDB.connection + '.ts']
+                    modelPaths: [__dirname + '/../**/*.modelredmine.' + environment.redmineDB.connection + '.ts']
                 });
 
                 this.sequelize.authenticate().then(() => {
@@ -56,23 +57,26 @@ export class Redmine {
     synchronizeHour() {
         let synchronizeProjects: SynchronizeProjects;
         let synchronizeUsers: SynchronizeUsers;
+        let synchronizeVersions: SynchronizeVersions;
 
-        synchronizeProjects = new SynchronizeProjects(this.sequelize, this.sequelizeRedTrench);
-        synchronizeUsers = new SynchronizeUsers(this.sequelize, this.sequelizeRedTrench);
+        synchronizeUsers = new SynchronizeUsers(this.sequelize, this.sequelizeFastmine);
+        synchronizeProjects = new SynchronizeProjects(this.sequelize, this.sequelizeFastmine);
+        synchronizeVersions = new SynchronizeVersions(this.sequelize, this.sequelizeFastmine);
 
-        synchronizeProjects.synchronize().then(result => {});
         synchronizeUsers.synchronize().then(result => {});
+        synchronizeProjects.synchronize().then(resultProjects => { });
+        synchronizeVersions.synchronize().then(result => {});
     }
 
     synchronizeFiveMinutes() {
         // TODO: Call synchronize in five minutes
     }
 
-    getSequelizeRedtrench(): Sequelize {
-        return this.sequelizeRedTrench;
+    getSequelizeFastime(): Sequelize {
+        return this.sequelizeFastmine;
     }
 
-    setSequelizeRedtrench(value: Sequelize) {
-        this.sequelizeRedTrench = value;
+    setSequelizeFastime(value: Sequelize) {
+        this.sequelizeFastmine = value;
     }
 }
