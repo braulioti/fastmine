@@ -2,8 +2,8 @@
 ## FastMine - Redmine Integration
 
 [![Twitter: @braulio_info](https://img.shields.io/badge/contact-@braulio_info-blue.svg?style=flat)](https://twitter.com/braulio_info)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/20b04ed75dd34d4ca8e7cef4812be3c8)](https://app.codacy.com/app/braulioti/redtench?utm_source=github.com&utm_medium=referral&utm_content=braulioti/redtench&utm_campaign=Badge_Grade_Settings)
-[![Travis Badge](https://travis-ci.org/braulioti/redtench.svg?branch=dev)](https://travis-ci.org/braulioti/redtench)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/20b04ed75dd34d4ca8e7cef4812be3c8)](https://app.codacy.com/app/braulioti/fastmine?utm_source=github.com&utm_medium=referral&utm_content=braulioti/fastmine&utm_campaign=Badge_Grade_Settings)
+[![Travis Badge](https://travis-ci.org/braulioti/fastmine.svg?branch=dev)](https://travis-ci.org/braulioti/fastmine)
 [![GPL Badge](https://upload.wikimedia.org/wikipedia/commons/8/86/GPL_v3_Blue_Badge.svg)](https://www.gnu.org/licenses/gpl.html)
 [![NodeJS](https://img.shields.io/node/v/next/latest.svg)](https://nodejs.org)
 [![Angular](https://img.shields.io/badge/@angular/cli-7.3.1-red.svg?logo=angular&style=flat)](https://angular.io)
