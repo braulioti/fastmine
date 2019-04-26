@@ -26,8 +26,8 @@ export class Server {
                     password: environment.db.password,
                     host: environment.db.host,
                     port: environment.db.port,
-                    //logging: console.log,
-                    logging: false,
+                    logging: console.log,
+                    //logging: false,
                     storage: ':memory:',
                     modelPaths: [__dirname + '/../**/*.model.ts', __dirname + '/../**/*.modelfastmine.ts']
                 });

@@ -1,4 +1,6 @@
 import {Column, Model, Table} from 'sequelize-typescript';
+import {HasMany} from 'sequelize-typescript/lib/annotations/association/HasMany';
+import {EmailAddressFastmine} from './fm-email-address.modelfastmine';
 
 @Table({tableName: 'fm_user'})
 export class UserFastmine extends Model<UserFastmine> {

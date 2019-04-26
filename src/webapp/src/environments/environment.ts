@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  version: '1.0.0-beta.1 (dev)'
+  version: '1.0.0-beta.1 (dev)',
+  node: 'http://localhost:3000'
 };
 
 /*

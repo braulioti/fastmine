@@ -4,6 +4,7 @@ import * as sequelize from 'sequelize';
 import {SynchronizeProjects} from './synchronize/projects.synchronize';
 import {SynchronizeUsers} from './synchronize/users.synchronize';
 import {SynchronizeVersions} from './synchronize/versions.synchronize';
+import {SynchronizeEmailAdresses} from './synchronize/email-addresses.synchronize';
 
 export class Redmine {
     sequelize: Sequelize;
@@ -39,8 +40,8 @@ export class Redmine {
                     password: environment.redmineDB.password,
                     host: environment.redmineDB.host,
                     port: environment.redmineDB.port,
-                    logging: console.log,
-                    //logging: false,
+                    //logging: console.log,
+                    logging: false,
                     storage: ':memory:',
                     modelPaths: [__dirname + '/../**/*.modelredmine.' + environment.redmineDB.connection + '.ts']
                 });
@@ -58,14 +59,17 @@ export class Redmine {
         let synchronizeProjects: SynchronizeProjects;
         let synchronizeUsers: SynchronizeUsers;
         let synchronizeVersions: SynchronizeVersions;
+        let synchronizeEmailAdresses: SynchronizeEmailAdresses;
 
         synchronizeUsers = new SynchronizeUsers(this.sequelize, this.sequelizeFastmine);
         synchronizeProjects = new SynchronizeProjects(this.sequelize, this.sequelizeFastmine);
         synchronizeVersions = new SynchronizeVersions(this.sequelize, this.sequelizeFastmine);
+        synchronizeEmailAdresses = new SynchronizeEmailAdresses(this.sequelize, this.sequelizeFastmine);
 
-        synchronizeUsers.synchronize().then(result => {});
-        synchronizeProjects.synchronize().then(resultProjects => { });
-        synchronizeVersions.synchronize().then(result => {});
+        synchronizeUsers.synchronize().then(resultUsers => {});
+        synchronizeEmailAdresses.synchronize().then(resultAddresses => {});
+        synchronizeProjects.synchronize().then(resultProjects => {});
+        synchronizeVersions.synchronize().then(resultVersions => {});
     }
 
     synchronizeFiveMinutes() {

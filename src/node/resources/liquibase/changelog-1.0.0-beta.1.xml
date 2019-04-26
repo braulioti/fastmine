@@ -2050,4 +2050,60 @@
             <column name="redmine_id" type="int"/>
         </addColumn>
     </changeSet>
+
+    <changeSet id="69" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="fm_email_addresses"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="fm_email_address">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="address" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_default" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="notify" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated_on" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="redmine_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="70" author="braulio.figueiredo">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="sq_email_address"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="sq_email_address" startValue="1"/>
+    </changeSet>
+
+    <changeSet id="71" author="braulio.figueiredo">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="fm_email_address"
+                                 constraintName="fk_email_address_user"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fm_user"/>
+    </changeSet>
 </databaseChangeLog>
